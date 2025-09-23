@@ -1,3 +1,9 @@
 # Docker file for the api
 
 FROM python:3.11-slim
+
+ADD main.py .
+
+RUN pip install fastapi uvicorn
+
+CMD ["python","./main.py"]
