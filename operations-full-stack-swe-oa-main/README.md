@@ -15,11 +15,11 @@ We care about practical problem-solving, documentation style, well structured co
 Create an API endpoint that takes a list of numbers and returns them sorted using either Flask or FastAPI.
 
 ### Requirements:
-1. Create an API application with a single endpoint `/sorted-numbers`
-2. The endpoint should accept GET requests
-3. Should accept a list of integers in the request body
-4. Return the numbers in both original and sorted order
-5. Return the response in JSON format
+✅1. Create an API application with a single endpoint `/sorted-numbers`
+✅2. The endpoint should accept GET requests
+✅3. Should accept a list of integers in the request body
+✅4. Return the numbers in both original and sorted order
+✅5. Return the response in JSON format
 6. The API should be as safe as possible, validate the input handle errors gracefully. 
 7. Errors should occur when `numbers` is not in the request body OR `numbers` is not a list of integers. 
 
@@ -40,8 +40,8 @@ Create an API endpoint that takes a list of numbers and returns them sorted usin
 ```
 
 ### Instructions:
-1. Choose either Flask or FastAPI for your implementation
-2. Implement the API application in a file called `main.py`
+✅1. Choose either Flask or FastAPI for your implementation
+✅2. Implement the API application in a file called `main.py`
 3. Make sure the server runs on `localhost:8000` (or specify a different port if needed)
 
 To test the application, you can use the requests module or curl commands:
@@ -54,7 +54,7 @@ Now that you have a working API, let's containerize it using Docker to make it e
 1. Edit the `Dockerfile` to build the image
 3. Expose port 8000 so that making a request to `localhost:8000` will hit the dockerized API
 - Use Python 3.11+ as the base image (already in the Dockerfile)
-- You will likely need to create a `requirements.txt` file with all necessary dependencies
+✅ - You will likely need to create a `requirements.txt` file with all necessary dependencies
 - The containerized API works the same as the local version
 
 ### Example Commands that should build and run the dockerized API:
