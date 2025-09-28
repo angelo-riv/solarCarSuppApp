@@ -1,15 +1,22 @@
 from fastapi import FastAPI, HTTPException
-#uvicorn main:app --reload
+from pydantic import BaseModel
+from typing import List
 
 app = FastAPI()
-@app.get("/sorted-numbers")
-def sorted_numbers(numbers: list):
-    sorted_numbers = sorted(numbers)
-    return {"original_numbers":numbers,
-            "sorted_numbers":sorted_numbers}
 
+class NumbersRequest(BaseModel):
+    numbers: List[int]
 
+@app.post("/sorted-numbers")
+def sorted_numbers(req: NumbersRequest): #Validates with number request model
+    numbers = req.numbers
+    if not numbers:
+        raise HTTPException(status_code=400, detail="List of numbers cannot be empty")
+    return {
+        "original_numbers": numbers,
+        "sorted_numbers": sorted(numbers)
+    }
 
 if __name__ == "__main__":
-    sorted_numbers([3,1,2])
-    uvicorn.run(app, port=8000, host="0.0.0.0")
+    import uvicorn
+    uvicorn.run(app, host="0.0.0.0", port=8000)

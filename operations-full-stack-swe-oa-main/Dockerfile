@@ -1,11 +1,17 @@
-# Docker file for the api
-
+# Docker file for the API
 FROM python:3.11-slim
 
-ADD main.py .
+# Set working directory
+WORKDIR /app
 
-ADD requirements.txt .
+# Copy requirements
+COPY requirements.txt .
 
-RUN pip install -r requirements.txt
+# Install dependencies
+RUN pip install --no-cache-dir -r requirements.txt
 
-CMD ["uvicorn","main:app","--host","0.0.0.0","--port","8000"]
+# Copy app code
+COPY main.py .
+
+# Run app with uvicorn
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
